@@ -1,0 +1,97 @@
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+    position: relative;
+    width: 100%;
+  }
+/* The side navigation menu */
+.sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+.boton-menu{
+  background: black;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 3.9%;
+  box-sizing: border-box;
+}
+.weas{
+    display: flex;
+    flex-direction: row;
+     box-sizing: border-box;
+    justify-content: flex-end;
+    padding: 2% 0% 2.8% 0%;
+    width: 100%;
+    background-color: #197FCA;
+    align-items: center;
+
+}
+.barrabuscar{
+  padding: 3px 0px 5px 5px;
+  box-sizing: border-box;
+  box-shadow:
+    0px 5px #bbb,
+    0px 8px 10px rgba(0, 0, 0, 0.5);
+    border: 0px;
+     outline: none;
+  width: 30%;   
+}
+.icon-search{
+margin-right: 2%;
+ background-color: #088def;
+ box-shadow:
+    0px 5px #0276c1,
+    0px 8px 10px rgba(0, 0, 0, 0.5);
+padding: 2px 5px 5px 5px;
+ 
+  color: #fff;
+}
+.logo{
+  margin-right: 7%;
+  width: 34%;
+  height: 30%;
+}
+.icon-menu:before{
+  font-size: 19px;
+}
+.icon-menu{
+  font-size: 17px;
+}
+.icon-menu{
+  color: #fff;
+}
