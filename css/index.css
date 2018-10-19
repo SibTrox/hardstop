@@ -96,10 +96,7 @@ table .nombre{
     border-radius: 1px 1px 1px 1px;
     padding: 5px;
     font-size: 16px;
-    letter-spacing: 1px;
-    
-
-    
+    letter-spacing: 1px;   
 }
 #loading{
     position: absolute;
@@ -152,7 +149,30 @@ table .nombre{
 .btnfavoritored{
     color : red;
 }
-
+#casicompro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#casicompro label{
+    font-size: 20px;
+    margin-top: 40px;
+}
+#casicompro button{
+    width: 260px;
+    height: 50px;
+    position: relative;
+    display: block;
+    margin: 5px auto;
+    border-radius: 10px;
+    border: none;
+    background: #42C2DF;
+    color: white;
+    font-size: 20px;
+    transition: background 0.4s;
+    cursor: pointer;
+}
 
 
 

@@ -141,20 +141,20 @@ function cancelar(){
         }
         if(elemento.classList.contains("compra")){
             document.getElementById("compra").id = "ocultar4";
-            document.getElementById("ocultar5").id = "compra";
+            document.getElementById("ocultar5").id = "casicompro";
             $cajaconfirmar.addEventListener('click', function (event) {
                 let element = event.target;
                 if(element.classList.contains("cancelar")){
                     comprar =``;
-                    document.getElementById("compra").id = "ocultar4";
                     document.getElementById("ocultar2").id = "prodelegido";
+                    document.getElementById("casicompro").id = "ocultar5";
                 }
                 if(element.classList.contains("noscompro")){
                     swal("Compra realizada!", "Recibiras mas informacion sobre tu compra en tu casilla de correo", "success")
                     .then((value) => {
                         tabla2 = ``;
+                        document.getElementById("casicompro").id = "ocultar5";
                         document.getElementById("ocultar").id="productos";
-                        document.getElementById("compra").id = "ocultar4";
                       });
                 }
             })
