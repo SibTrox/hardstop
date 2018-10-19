@@ -4,6 +4,7 @@
  var $boton=document.getElementsByClassName('boton');
  var $productoelegido = document.getElementById('ocultar2');
  var $cajacomprar = document.getElementById('ocultar4');
+ var $cajaconfirmar = document.getElementById('ocultar5')
  var tabla = ``;
  var tabla2 = ``;
  var comprar = ``; 
@@ -138,6 +139,26 @@ function cancelar(){
             document.getElementById("compra").id = "ocultar4";
             document.getElementById("ocultar2").id = "prodelegido";
         }
+        if(elemento.classList.contains("compra")){
+            document.getElementById("compra").id = "ocultar4";
+            document.getElementById("ocultar5").id = "compra";
+            $cajaconfirmar.addEventListener('click', function (event) {
+                let element = event.target;
+                if(element.classList.contains("cancelar")){
+                    comprar =``;
+                    document.getElementById("compra").id = "ocultar4";
+                    document.getElementById("ocultar2").id = "prodelegido";
+                }
+                if(element.classList.contains("noscompro")){
+                    swal("Compra realizada!", "Recibiras mas informacion sobre tu compra en tu casilla de correo", "success")
+                    .then((value) => {
+                        tabla2 = ``;
+                        document.getElementById("ocultar").id="productos";
+                        document.getElementById("compra").id = "ocultar4";
+                      });
+                }
+            })
+        }
     }, false);
 }
 
@@ -157,7 +178,6 @@ function compra(){
             // application/json : los parámetros se enviaran a través del body del request
             request.setRequestHeader("Content-Type", "application/json");
             request.onreadystatechange = function(){
-                console.log("funca");
                 if(request.status==200 && request.readyState==4){
                         window.sessionStorage.removeItem("precio");
                         let respuestaDelServidor = JSON.parse(request.responseText);
@@ -178,7 +198,6 @@ function compra2(){
             // application/json : los parámetros se enviaran a través del body del request
             req.setRequestHeader("Content-Type", "application/json");
             req.onreadystatechange = function(){
-                console.log("funca");
                 if(req.status==200 && req.readyState==4){
                         window.sessionStorage.removeItem("id");
                         let respuestaDelServidor = JSON.parse(req.responseText);
@@ -186,5 +205,6 @@ function compra2(){
             };
             // la función JSON.stringify() transforma una variable tipo object a un string con formato Json
             req.send(JSON.stringify(parametros));
+
 
 }
