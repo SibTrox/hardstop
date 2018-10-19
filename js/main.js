@@ -62,14 +62,14 @@ function selecprod(prodss){
                     tabla2 += '</table>'
                             + '<div id="menu-compras">'
                             + '<button type="submit" class="botonxd btnvolver botonc"><span class="icon-undo2"></span>Volver</button>'
-                            + '<button type="submit" class="botonxd"><span class="icon-heart"></span></button>'
+                            + '<button type="submit" id="favorito" class="botonxd btnfavorito"><span class="icon-heart"></span>Fav</button>'
                             + '<button type="submit" class="botonxd btncomprar"><span class="icon-cart"></span>Comprar</button>';
                             + '</div>'
                     document.getElementById("ocultar2").id = "prodelegido";
                     $productoelegido.innerHTML=tabla2;
-                    volver();
                     window.sessionStorage.setItem("precio",id.precio);
                     window.sessionStorage.setItem("id",id.id_producto);
+                    volver(elemento.value);
                 } 
             }
         }
@@ -78,7 +78,7 @@ function selecprod(prodss){
     }, false);
     
 }
-function volver(){
+function volver(paramProducto){
     $productoelegido.addEventListener('click', function (event) {
         let elemento = event.target;
         if (elemento.classList.contains("btncomprar")){
@@ -91,7 +91,44 @@ function volver(){
             document.getElementById("ocultar").id="productos";
             document.getElementById("prodelegido").id = "ocultar2";
         }
+        if(elemento.classList.contains("btnfavoritored")){
+            debugger
+            let boton = document.getElementById("favorito")
+            boton.classList.remove("btnfavoritored")
+            boton.classList.add("botonfavorito")
+            //quitarProducto(paramProducto)
+            return true
+        }
+        if(elemento.classList.contains("btnfavorito")){
+            debugger
+            let boton = document.getElementById("favorito")
+            boton.classList.remove("btnfavorito")
+            boton.classList.add("btnfavoritored")
+            agregarProducto(paramProducto)
+            return true
+        }  
     }, false);
+}
+
+function agregarProducto (paramProducto) {
+    a = JSON.parse(localStorage.getItem('test'))
+    if(a === null){
+        localStorage.setItem('test',paramProducto)
+    }else{
+        b = a.toString();
+        test = b.split(',')
+        test.push(paramProducto)
+        var buola = test.reduce((i,n) => i+','+n)
+        localStorage.setItem('test',buola)
+    }
+}
+
+function quitarProducto (producto) {
+    let a = []
+    a = JSON.parse(localStorage.getItem('session'))
+    a.forEach(function (elemento, indice) {
+        console.log(elemento, indice);
+    });
 }
 function cancelar(){
     $cajacomprar.addEventListener('click', function (event) {
