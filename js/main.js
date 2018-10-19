@@ -45,7 +45,7 @@ window.onload = function(){
 function selecprod(prodss){
     $producto.addEventListener('click', function (event) {
         let elemento = event.target;
-        console.log(elemento.value);
+        
         if (elemento.classList.contains("boton")){
             
                 
@@ -68,6 +68,8 @@ function selecprod(prodss){
                     document.getElementById("ocultar2").id = "prodelegido";
                     $productoelegido.innerHTML=tabla2;
                     volver();
+                    window.sessionStorage.setItem("precio",id.precio);
+                    window.sessionStorage.setItem("id",id.id_producto);
                 } 
             }
         }
@@ -80,18 +82,8 @@ function volver(){
     $productoelegido.addEventListener('click', function (event) {
         let elemento = event.target;
         if (elemento.classList.contains("btncomprar")){
-            document.getElementById("prodelegido").id = "ocultar2";
-            comprar += '<form action="#" method="POST" class="formcompra">'
-            +'<p>N° de la tarjeta de credito</p> <input type="text" name="tarjeta" id="tarjeta">'
-            +'<p>Nombre del titular</p> <input type="text" name="nombre" id="nombre">'
-            +'<p>Codigo de seguridad</p> <input type="text" name="codseg" id="codseg">'
-            +'<p>Fecha de vencimiento</p> <div class="cajanum"><p>Mes</p> <input type="number" name="fvmes" id="fvmes" class="number" > <p>Año</p><input type="number" name="fvaño" id="fvaño" class="number"></div>'          
-            +'<input type="submit" class="botonxd compra" value="Finalizar compra">'
-            +'</form>'
-            +'<button type="submit" class="botonxd btnvolver cancelar"><span class="icon-undo2"></span>Cancelar</button>';
-           
+            document.getElementById("prodelegido").id = "ocultar2"; 
             document.getElementById("ocultar4").id = "compra";
-            $cajacomprar.innerHTML=comprar;
             cancelar();
         }
         if (elemento.classList.contains("btnvolver")){
@@ -110,4 +102,52 @@ function cancelar(){
             document.getElementById("ocultar2").id = "prodelegido";
         }
     }, false);
+}
+
+
+
+
+function compra(){
+   
+    var precio = window.sessionStorage.getItem("precio");
+    
+            
+            let parametros = {precio:precio };
+            let request = new XMLHttpRequest();
+            let url = 'https://hardstopp.000webhostapp.com/api/compra.php';
+            request.open('POST', url, true);// configuro mi request para que sea tipo POST
+            // Este header es necesario para comunicar al servidor dónde son enviados los parámetros
+            // application/json : los parámetros se enviaran a través del body del request
+            request.setRequestHeader("Content-Type", "application/json");
+            request.onreadystatechange = function(){
+                console.log("funca");
+                if(request.status==200 && request.readyState==4){
+                        window.sessionStorage.removeItem("precio");
+                        let respuestaDelServidor = JSON.parse(request.responseText);
+                }
+            };
+            // la función JSON.stringify() transforma una variable tipo object a un string con formato Json
+            request.send(JSON.stringify(parametros));
+
+}
+
+function compra2(){
+    var id = window.sessionStorage.getItem("id");
+    let parametros = {id:id };
+            let req = new XMLHttpRequest();
+            let url2 = 'https://hardstopp.000webhostapp.com/api/prodxventa.php';
+            req.open('POST', url2, true);// configuro mi request para que sea tipo POST
+            // Este header es necesario para comunicar al servidor dónde son enviados los parámetros
+            // application/json : los parámetros se enviaran a través del body del request
+            req.setRequestHeader("Content-Type", "application/json");
+            req.onreadystatechange = function(){
+                console.log("funca");
+                if(req.status==200 && req.readyState==4){
+                        window.sessionStorage.removeItem("id");
+                        let respuestaDelServidor = JSON.parse(req.responseText);
+                }
+            };
+            // la función JSON.stringify() transforma una variable tipo object a un string con formato Json
+            req.send(JSON.stringify(parametros));
+
 }

@@ -8,9 +8,8 @@
  	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/menu.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
-    <link rel="stylesheet" type="text/css" href="css/comprar.css">
+    <link rel="stylesheet" type="text/css" href="css/compra.css">
     <link rel="stylesheet" type="text/css" href="icomoon/style.css">
-    PIJAXD
     <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
     <!--<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">-->
     <title>HARDSTOP</title>
@@ -39,15 +38,53 @@
   <div id="ocultar2">
 
   </div>
-  <div id="ocultar4">
-    
+ <div id="ocultar4">
+
+     
+        <div class="container">
+            <div class="col2">
+                <label>Card Number</label>
+                <input class="number" type="text" ng-model="ncard" maxlength="19" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
+                <label>Cardholder name</label>
+                <input class="inputname" type="text" placeholder=""/>
+                <label>Expiry date</label>
+                <input class="expire" type="text" placeholder="MM / YYYY"/>
+                <label>Security Number</label>
+                <input class="ccv" type="text" placeholder="CVC" maxlength="3" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
+                <div class="col1">
+                    <div class="card">
+                      <div class="front">
+                        <div class="type">
+                          <img class="bankid"/>
+                        </div>
+                        <span class="chip"></span>
+                        <span class="card_number">&#x25CF;&#x25CF;&#x25CF;&#x25CF; &#x25CF;&#x25CF;&#x25CF;&#x25CF; &#x25CF;&#x25CF;&#x25CF;&#x25CF; &#x25CF;&#x25CF;&#x25CF;&#x25CF; </span>
+                        <div class="date"><span class="date_value">MM / YYYY</span></div>
+                        <span class="fullname">FULL NAME</span>
+                      </div>
+                      <div class="back">
+                        <div class="magnetic"></div>
+                        <div class="bar"></div>
+                        <span class="seccode">&#x25CF;&#x25CF;&#x25CF;</span>
+                        <span class="chip"></span><span class="disclaimer">This card is property of Random Bank of Random corporation. <br> If found please return to Random Bank of Random corporation - 21968 Paris, Verdi Street, 34 </span>
+                      </div>
+                    </div>
+                  </div>
+                <button class="buy" onclick="compra(),compra2();"><i class="material-icons">lock</i> Pay --.-- €</button>
+                <button class="buy cancelar"> Cancelar</button>
+              </div>
+         
+          
+        </div>
   </div>
 </div>
-
-
     <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/xd.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
     <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/nav.js"></script>
 </body>
 
 </html>
